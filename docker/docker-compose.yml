@@ -93,27 +93,27 @@ services:
       timeout: 5s
       retries: 3
 
-  ollama:
-    image: ollama/ollama:latest
-    container_name: philcongress_ollama
-    restart: unless-stopped
-    volumes:
-      - ollama_data:/root/.ollama
-    ports:
-      - "11434:11434"
-    networks:
-      - philcongress_net
-    # Uncomment to enable GPU (requires NVIDIA Container Toolkit)
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: 1
-    #           capabilities: [gpu]
-    healthcheck:
-      test: ["CMD-SHELL", "timeout 2 bash -c '</dev/tcp/localhost/11434' && echo ok || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 20s
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   container_name: philcongress_ollama
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #   ports:
+  #     - "11434:11434"
+  #   networks:
+  #     - philcongress_net
+  #   # Uncomment to enable GPU (requires NVIDIA Container Toolkit)
+  #   # deploy:
+  #   #   resources:
+  #   #     reservations:
+  #   #       devices:
+  #   #         - driver: nvidia
+  #   #           count: 1
+  #   #           capabilities: [gpu]
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "timeout 2 bash -c '</dev/tcp/localhost/11434' && echo ok || exit 1"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #     start_period: 20s
